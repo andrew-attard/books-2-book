@@ -1,11 +1,12 @@
 <h1><%= @book.title %></h1>
   <h2><%= @book.author %></h2>
   <h2><%= @book.genre %></h2>
-<%# <% @book.ownerships.each do |book, ownership| %>
-<%#  <%= book.title %>
-<%#  <%= ownership.price %>
-<%#  <%= ownership.condition %>
-<%#  raise
-<%# <% end %>
+<% @book.ownerships.each do |ownership| %>
+<ul>
+ <li><%= ownership.user.first_name %></li>
+ <li><%= ownership.price %></li>
+ <li><%= ownership.condition %></li>
+</ul>
+<% end %>
 <%# <%= link_to "Add a Book", new_book_path(@book.id), class: 'btn-light opacity-25 text-decoration-none' %>
 <%# <%= link_to 'Back to Books', books_path, class: 'btn-light opacity-25 text-decoration-none' %>
