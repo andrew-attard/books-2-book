@@ -1,22 +1,40 @@
+require 'httparty'
 require 'faker'
 
 puts "Cleaning the DB..."
-Book.destroy_all
-User.destroy_all
 Ownership.destroy_all
+User.destroy_all
+Book.destroy_all
+
+class OpenLibraryApi
+  include HTTParty
+  base_uri 'https://openlibrary.org'
+
+  def search_books(query, limit = 10)
+    self.class.get("/search.json", query: { q: query, limit: limit })
+  end
+end
 
 puts 'Seeding DB...'
-10.times do
+
+api = OpenLibraryApi.new
+response = api.search_books('programming', 10)
+
+books_data = response.parsed_response['docs']
+
+books_data.each do |book_data|
   Book.create!(
-    title: Faker::Book.title,
-    author: Faker::Book.author,
-    genre: Faker::Book.genre
+    title: book_data['title'],
+    author: book_data['author_name']&.join(', '),
+    genre: book_data['subject']&.first || 'Unknown',
+    description: book_data['first_sentence']&.first || 'No description available',
+    isbn: book_data['isbn']&.first || 'No ISBN available'
   )
 end
 
 conditions = ["Poor", "Fair", "Good", "Excellent", "Mint"]
-price_generator = "$#{rand(1..10)}"
-# Seed Users, Ownerships
+price_generator = -> { "$#{rand(1..10)}" }
+
 20.times do
   user = User.create!(
     email: Faker::Internet.email,
@@ -27,7 +45,7 @@ price_generator = "$#{rand(1..10)}"
   Ownership.create!(
     book: Book.all.sample,
     user: user,
-    price: price_generator,
+    price: price_generator.call,
     condition: conditions.sample
   )
 end
