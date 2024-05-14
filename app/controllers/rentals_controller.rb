@@ -15,6 +15,10 @@ class RentalsController < ApplicationController
     end
   end
 
+  def index
+    @rentals = Rental.all
+  end
+
   private
 
   def rental_params
