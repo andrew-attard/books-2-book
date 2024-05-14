@@ -18,4 +18,10 @@ class RentalsController < ApplicationController
   def index
     @rentals = Rental.all
   end
+
+  private
+
+  def rental_params
+    params.require(:rental).permit(:start_date, :end_date)
+  end
 end
