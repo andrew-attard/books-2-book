@@ -7,7 +7,7 @@ class RentalsController < ApplicationController
   def create
     @ownership = Ownership.find(params[:ownership_id])
     @rental = Rental.new(rental_params)
-    @rental.list = @rental
+    @rental.ownership = @ownership
     if @rental.save
       redirect_to rental_path(@rental)
     else
