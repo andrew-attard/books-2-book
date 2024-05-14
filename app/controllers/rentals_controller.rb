@@ -14,4 +14,10 @@ class RentalsController < ApplicationController
       render 'show', status: :unprocessable_entity
     end
   end
+
+  private
+
+  def rental_params
+    params.require(:rental).permit(:start_date, :end_date)
+  end
 end
