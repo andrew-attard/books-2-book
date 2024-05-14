@@ -14,4 +14,8 @@ class RentalsController < ApplicationController
       render 'show', status: :unprocessable_entity
     end
   end
+
+  def index
+    @rentals = Rental.all
+  end
 end
