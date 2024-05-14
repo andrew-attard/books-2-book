@@ -53,7 +53,6 @@ gem "sassc-rails"
 
 # Custom added gems
 gem 'httparty'
-gem 'dotenv-rails', groups: [:development, :test]
 gem 'faker'
 
 group :development, :test do
