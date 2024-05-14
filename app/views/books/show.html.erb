@@ -1,12 +1,45 @@
-<h1><%= @book.title %></h1>
-  <h2><%= @book.author %></h2>
-  <h2><%= @book.genre %></h2>
-<% @book.ownerships.each do |ownership| %>
-<ul>
- <li><%= ownership.user.first_name %></li>
- <li><%= ownership.price %></li>
- <li><%= ownership.condition %></li>
-</ul>
-<% end %>
+<div class="container my-5">
+  <div class="row">
+    <div class="col-md-3">
+      <img src="https://via.placeholder.com/150" class="img-fluid" alt="Book Image">
+    </div>
+    <div class="col-md-9">
+      <h1><%= @book.title %></h1>
+      <p class="lead"><strong>Author:</strong> <%= @book.author %></p>
+      <p class="lead"><strong>Description:</strong> <%= @book.description %></p>
+      <div class="row">
+        <div class="col-md-4">
+          <p><strong>Genre:</strong> <%= @book.genre %></p>
+        </div>
+        </div>
+        <div class="col-md-4">
+          <p><strong>ISBN:</strong> <%= @book.isbn %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <h2>Ownership Information</h2>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Renter</th>
+        <th>Price</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @book.ownerships.each do |ownership| %>
+        <tr>
+          <td><%= ownership.user.first_name %> <%= ownership.user.last_name %></td>
+          <td><%= ownership.price %></td>
+          <td><%= ownership.condition %></td>
+          <td><button class="btn btn-primary" disabled>Booking</button></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
 <%# <%= link_to "Add a Book", new_book_path(@book.id), class: 'btn-light opacity-25 text-decoration-none' %>
 <%# <%= link_to 'Back to Books', books_path, class: 'btn-light opacity-25 text-decoration-none' %>
