@@ -8,6 +8,10 @@ class RentalsController < ApplicationController
     @ownership = Ownership.find(params[:ownership_id])
     @rental = Rental.new(rental_params)
     @rental.ownership = @ownership
+<<<<<<< HEAD
+    @rental.status = "false"
+=======
+>>>>>>> master
     if @rental.save
       redirect_to rental_path(@rental)
     else
