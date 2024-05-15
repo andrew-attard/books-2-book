@@ -5,6 +5,7 @@ class RentalsController < ApplicationController
 
   def new
     @ownership = Ownership.find(params[:ownership_id])
+    @book = @ownership.book
     @rental = Rental.new
   end
 
@@ -17,6 +18,7 @@ class RentalsController < ApplicationController
     if @rental.save
       redirect_to rentals_path
     else
+      @book = @ownership.book
       render 'new', status: :unprocessable_entity
     end
   end
