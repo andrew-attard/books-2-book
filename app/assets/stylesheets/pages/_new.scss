@@ -1,0 +1,56 @@
+// Import page-specific CSS files here.
+@import "home";
+
+.show-book-cover {
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+}
+
+.book-show-card {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+}
+
+.book-show-card img {
+  max-width: 250px;
+  margin-right: 20px;
+}
+
+.book-show-info {
+  flex-grow: 1;
+}
+
+.book-details .lead strong {
+  font-weight: bold;
+}
+
+.book-details .lead {
+  margin-bottom: 10px;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.submit-btn {
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .book-show-card {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .book-show-card img {
+    max-width: 100%;
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+
+  .book-details {
+    text-align: center;
+  }
+}
