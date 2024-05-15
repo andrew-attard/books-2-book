@@ -1,5 +1,5 @@
 <div>
-  <%= simple_form_for @rental do |f| %>
+  <%= simple_form_for [ @ownership, @rental ], data: { controller: 'flatpickr' } do |f| %>
     <%= f.input :start_date, as: :string, input_html: { data: { flatpickr_target: "startTime" } }%>
     <%= f.input :end_date, as: :string, input_html: { data: { flatpickr_target: "endTime" } } %>
     <%= f.submit 'Submit', class: 'btn submit-btn' %>
