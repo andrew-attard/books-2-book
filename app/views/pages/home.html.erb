@@ -1,50 +1,62 @@
 <div class="container">
-<div class="px-4 py-5 my-5 text-center">
-    <%= image_tag("books-stack.svg", :alt => "Stack of Books", :size => "250x180") %>
-    <h1 class="display-5 fw-bold text-body-emphasis">Books 2 Book</h1>
+  <div class="px-4 py-5 my-5 text-center">
+    <%= image_tag("books-stack.svg", alt: "Stack of Books", size: "250x180") %>
+    <h1 class="display-5 fw-bold text-body-emphasis">BOOKS2BOOK</h1>
     <div class="col-lg-6 mx-auto">
       <p class="lead mb-4">Find books to rent.</p>
+      <!-- Available Books Section -->
+      <div class="row justify-content-center mb-4 books-container">
+        <% @books.sample(3).each do |book| %>
+          <div class="col-md-4 book-card">
+            <div class="card mb-4 border-0 shadow">
+              <a href="<%= book_path(book) %>">
+                <img src="<%= book.cover_url %>" alt="Cover of <%= book.title %>" class="index-book-cover">
+              </a>
+              <div class="card-body card-body-home">
+                <h5 class="card-title">
+                  <strong><%= link_to book.title, book_path(book), class: 'text-dark' %></strong>
+                </h5>
+                <p class="card-text author-text"><%= book.author %></p>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
       <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-        <%= link_to books_path, class: 'text-dark' do %><button type="button" class="btn btn-primary btn-lg px-4 gap-3">View Books</button><% end %>
+        <%= link_to books_path, class: 'text-dark' do %>
+          <button type="button" class="btn btn-primary btn-lg px-4 gap-3">View All Books</button>
+        <% end %>
       </div>
     </div>
   </div>
+
   <!-- Features Section -->
-  <div class="container px-4 py-5" id="featured-3">
-    <h2 class="pb-2 border-bottom">Features</h2>
+  <div class="px-4 py-5 text-center">
+    <h2 class="display-6 fw-bold text-body-emphasis pb-2">Features</h2>
     <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
       <div class="feature col">
         <div class="feature-icon d-inline-flex align-items-center justify-content-center bg-gradient fs-2 mb-3">
-          <%= image_tag("search_icon.svg", :alt => "Stack of Books", :size => "40x40") %>
+          <%= image_tag("search_icon.svg", alt: "Search Icon", size: "40x40") %>
         </div>
-        <h3 class="fs-2 text-body-emphasis">Search & Filter</h3>
+        <h3 class="fs-4 text-body-emphasis">Search & Filter</h3>
         <p>Search and filter available books by author, genre, rating, and more.</p>
-        <a href="#" class="icon-link">
-          Search for Books
-          <svg class="bi"><use xlink:href="#chevron-right"/></svg>
-        </a>
+        <a href="#" class="icon-link">Search for Books <svg class="bi"><use xlink:href="#chevron-right"/></svg></a>
       </div>
       <div class="feature col">
         <div class="feature-icon d-inline-flex align-items-center justify-content-center bg-gradient fs-2 mb-3">
-          <%= image_tag("reviews_icon.svg", :alt => "Stack of Books", :size => "40x40") %>
+          <%= image_tag("reviews_icon.svg", alt: "Reviews Icon", size: "40x40") %>
         </div>
-        <h3 class="fs-2 text-body-emphasis">Check Reviews</h3>
-        <p>Check books reviews from amazon, goodreads, ....</p>
-        <a href="#" class="icon-link">
-          See Top Rated Books
-          <svg class="bi"><use xlink:href="#chevron-right"/></svg>
-        </a>
+        <h3 class="fs-4 text-body-emphasis">Check Reviews</h3>
+        <p>Check book reviews from Amazon, Goodreads, and more.</p>
+        <a href="#" class="icon-link">See Top Rated Books <svg class="bi"><use xlink:href="#chevron-right"/></svg></a>
       </div>
       <div class="feature col">
         <div class="feature-icon d-inline-flex align-items-center justify-content-center bg-gradient fs-2 mb-3">
-          <%= image_tag("book-a-book.svg", :alt => "Book a book", :size => "40x40") %>
+          <%= image_tag("book-a-book.svg", alt: "Book a Book", size: "40x40") %>
         </div>
-        <h3 class="fs-2 text-body-emphasis">Rent Books</h3>
-        <p>Rent books from x # of book owners for as long as you want.</p>
-        <a href="#" class="icon-link">
-          Show Books to Rent
-          <svg class="bi"><use xlink:href="#chevron-right"/></svg>
-        </a>
+        <h3 class="fs-4 text-body-emphasis">Rent Books</h3>
+        <p>Rent books from multiple book owners for as long as you want.</p>
+        <a href="#" class="icon-link">Show Books to Rent <svg class="bi"><use xlink:href="#chevron-right"/></svg></a>
       </div>
     </div>
   </div>

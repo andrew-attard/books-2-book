@@ -1,1 +1,72 @@
-// Specific CSS for your home-page
+// Import page-specific CSS files here.
+
+// Index View Styles
+.index-book-cover {
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+}
+
+.book-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 200px;
+  margin-bottom: 20px;
+  cursor: pointer;
+  &:hover {
+    scale: 1.05;
+    transition: 0.3s ease-in-out;
+  }
+}
+
+.card-body {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card-body-index, .card-body-home {
+  height: 100px; // Adjust the height as needed
+}
+
+.card-title {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.card-title a {
+  text-decoration: none;
+}
+
+.card-title a:hover {
+  text-decoration: underline;
+}
+
+.card-text {
+  font-size: 0.9rem;
+}
+
+.author-text {
+  margin-bottom: 10px;
+}
+
+.books-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+@media (max-width: 768px) {
+  .book-card {
+    max-width: 48%;
+  }
+}
+
+@media (max-width: 576px) {
+  .book-card {
+    max-width: 100%;
+  }
+}
