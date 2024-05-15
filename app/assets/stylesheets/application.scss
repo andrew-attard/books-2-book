@@ -25,6 +25,22 @@ body {
   color: black;
 }
 
+.dropdown-item {
+  &:hover {
+    transition: 0.3s ease-in-out;
+  }
+}
+
 .dropdown-menu {
   background-color: black;
+  color: white;
+}
+
+.btn {
+  background-color: $dark-green;
+  color: white;
+  &:hover {
+    background-color: $light-green;
+    color: black;
+  }
 }
