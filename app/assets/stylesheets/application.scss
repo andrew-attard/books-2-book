@@ -9,5 +9,12 @@
 @import "font-awesome";
 
 // Your CSS partials
+@import "components/alert";
+@import "components/avatar";
+@import "components/form_legend_clear";
 @import "components/index";
+@import "components/navbar";
+
+// Custom styles
 @import "pages/index";
+@import "pages/show";
