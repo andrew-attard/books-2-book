@@ -13,7 +13,8 @@ class RentalsController < ApplicationController
     @ownership = Ownership.find(params[:ownership_id])
     @rental = Rental.new(rental_params)
     @rental.ownership = @ownership
-    @rental.pending!
+    # @rental.pending! # to be used later in the owner journey
+    @rental.status = "false"
     @rental.user = current_user
     if @rental.save
       redirect_to rentals_path
