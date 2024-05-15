@@ -22,7 +22,7 @@
     </div>
   </div>
   <hr>
-  <table class="table table-striped">
+  <table class="table table-hover table-light">
     <thead>
       <tr>
         <th>Owner</th>
@@ -30,7 +30,7 @@
         <th>Price</th>
       </tr>
     </thead>
-    <tbody>
+    <tbody class="table-group-divider">
       <tr>
         <td><%= @ownership.user.first_name %> <%= @ownership.user.last_name %></td>
         <td><%= @ownership.condition %></td>
@@ -41,10 +41,10 @@
   <div class="card p-4 mb-4">
     <%= simple_form_for [ @ownership, @rental ], data: { controller: 'flatpickr' } do |f| %>
       <div class="form-group">
-        <%= f.input :start_date, as: :string, input_html: { class: 'form-control', data: { flatpickr_target: "startTime" } } %>
+        <%= f.input :start_date, as: :string, input_html: { class: 'form-control', data: { flatpickr_target: "startTime" }, placeholder: "Select start date" } %>
       </div>
       <div class="form-group">
-        <%= f.input :end_date, as: :string, input_html: { class: 'form-control', data: { flatpickr_target: "endTime" } } %>
+        <%= f.input :end_date, as: :string, input_html: { class: 'form-control', data: { flatpickr_target: "endTime" }, placeholder: "Select end date" } %>
       </div>
       <%= f.submit 'Submit', class: 'btn submit-btn btn-primary' %>
     <% end %>
