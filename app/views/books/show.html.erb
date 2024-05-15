@@ -36,7 +36,7 @@
           <td><%= ownership.user.first_name %> <%= ownership.user.last_name %></td>
           <td><%= ownership.condition %></td>
           <td>$<%= ownership.price %></td>
-          <td><%= link_to new_ownership_rental_path(ownership) do %><button class="btn btn-primary" disabled>Borrow</button><% end %></td>
+          <td><%= link_to new_ownership_rental_path(ownership) do %><button class="btn btn-primary">Borrow</button><% end %></td>
         </tr>
       <% end %>
     </tbody>
