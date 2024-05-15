@@ -10,10 +10,13 @@
     </div>
   </div>
 
-<form action="<%= search_path %>" method="get" class="form-inline my-2 my-lg-0">
-  <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="query">
-  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-</form>
+<div class="container">
+  <form action="<%= search_path %>" method="get" class="form-inline my-2 my-lg-0">
+   <div class="input-group mb-3">
+    <button class="btn btn-primary btn-lg ml-2" type="submit">Search</button>
+    <input class="form-control mr-sm-2" type="search" placeholder="title, author, genre or ISBN" aria-label="Search" name="query">
+  </div></form>
+</div>
 
   <!-- Features Section -->
   <div class="container px-4 py-5" id="featured-3">
