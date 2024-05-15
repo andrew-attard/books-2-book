@@ -1,4 +1,4 @@
-<h1 class="text-center my-4">Renting</h1>
+<h1 class="text-center my-4 page-heading">My Rentings</h1>
 <div class="container">
   <div class="row">
     <% @rentals.each do |rental| %>
@@ -6,10 +6,10 @@
         <div class="card mb-4 shadow-sm">
           <div class="card-body">
             <h5 class="card-title"><%= rental.book.title %></h5>
-            <p class="card-text"><strong>Author:</strong><%= rental.book.author %></p>
-            <p class="card-text"><strong>Genre:</strong><%= rental.book.genre %></p>
-            <p class="card-text"><strong>Rental start:</strong><%= rental.start_date%>
-            <p class="card-text"><strong>Rental end:</strong><%= rental.end_date%>
+            <p class="card-text"><strong>Author: </strong><%= rental.book.author %></p>
+            <p class="card-text"><strong>Genre: </strong><%= rental.book.genre %></p>
+            <p class="card-text"><strong>Rental start: </strong><%= rental.start_date%>
+            <p class="card-text"><strong>Rental end: </strong><%= rental.end_date%>
           </div>
         </div>
       </div>
