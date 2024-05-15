@@ -1,2 +1,12 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="container">
+<div class="px-4 py-5 my-5 text-center">
+    <%= image_tag("books-stack.svg", :alt => "Stack of Books", :size => "250x180") %>
+    <h1 class="display-5 fw-bold text-body-emphasis">Books 2 Book</h1>
+    <div class="col-lg-6 mx-auto">
+      <p class="lead mb-4">Find books to rent.</p>
+      <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+        <%= link_to books_path, class: 'text-dark' do %><button type="button" class="btn btn-primary btn-lg px-4 gap-3">View Books</button><% end %>
+      </div>
+    </div>
+  </div>
+</div>
