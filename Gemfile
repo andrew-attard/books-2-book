@@ -54,6 +54,7 @@ gem "sassc-rails"
 # Custom added gems
 gem 'httparty'
 gem 'faker'
+gem 'concurrent-ruby'
 
 group :development, :test do
   gem "dotenv-rails"
