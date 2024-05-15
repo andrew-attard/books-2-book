@@ -4,6 +4,7 @@ require 'concurrent-ruby'
 
 puts "Cleaning the DB..."
 Ownership.destroy_all
+Rental.destroy_all
 Book.destroy_all
 
 class OpenLibraryApi
@@ -30,7 +31,7 @@ titles = [
   'Alice\'s Adventures in Wonderland', 'Wuthering Heights', 'The Wind in the Willows',
   'The Lion, the Witch, and the Wardrobe', 'Ivanhoe',
   'My Ántonia', 'Fathers and Sons', 'The Fellowship of the Ring',
-  'The Trial', 'Moby Dick', 'Country Driving'
+  'The Trial', 'Moby Dick', 'Country Driving',
   'Gulliver\'s Travels', 'The Call of the Wild',
   'Alice\'s Adventures in Wonderland'
 ]
