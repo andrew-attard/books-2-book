@@ -1,4 +1,8 @@
 class RentalsController < ApplicationController
+  def index
+    @rentals = current_user.rentals
+  end
+
   def new
     @ownership = Ownership.find(params[:ownership_id])
     @rental = Rental.new
@@ -9,15 +13,12 @@ class RentalsController < ApplicationController
     @rental = Rental.new(rental_params)
     @rental.ownership = @ownership
     @rental.status = "false"
+    @rental.user = current_user
     if @rental.save
-      redirect_to rental_path(@rental)
+      redirect_to rentals_path
     else
-      render 'show', status: :unprocessable_entity
+      render 'new', status: :unprocessable_entity
     end
-  end
-
-  def index
-    @rentals = Rental.all
   end
 
   private
