@@ -40,7 +40,7 @@ popular_genres = [
   'Young Adult', 'Biography', 'Autobiography', 'Contemporary', 'Drama', 'Humor', 'Poetry', 'Epic', 'Self-help',
   'Graphic Novels', 'Memoir', 'Psychology', 'Science', 'Philosophy', 'Religion', 'Spirituality', 'Travel',
   'True Crime', 'Cooking', 'Health', 'Sports', 'Music', 'Photography', 'Crafts', 'Home', 'Gardening', 'Education',
-  'Business', 'Economics', 'Politics', 'Law', 'Technology', 'Computers', 'Engineering', 'Mathematics', 'Medical'
+  'Business', 'Economics', 'Politics', 'Law', 'Technology', 'Computers', 'Mathematics', 'Medical'
 ]
 
 def sanitize_genre_names(genres, popular_genres)
