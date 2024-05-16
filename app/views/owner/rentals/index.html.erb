@@ -12,9 +12,6 @@
             <strong><%= link_to rental.book.title, book_path(rental.book), class: 'text-dark' %></strong>
           </h5>
           <p class="card-text"><%= rental.book.author %></p>
-          <p class="card-text"><strong>Owner:</strong> <%= rental.ownership.user.first_name %> <%= rental.ownership.user.last_name %></p>
-          <p class="card-text"><strong>Start:</strong> <%= rental.start_date %></p>
-          <p class="card-text"><strong>End:</strong> <%= rental.end_date %></p>
         </div>
       </div>
     </div>
