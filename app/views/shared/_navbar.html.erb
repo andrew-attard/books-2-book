@@ -1,11 +1,11 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+<div class="navbar d-flex justify-content-between px-3 navbar-expand-sm navbar-light navbar-lewagon">
     <%= link_to root_path, class: "navbar-brand d-flex align-items-center" do %>
       <i class="fas fa-book"></i>
       <span class="ms-2 header-title">Books2Book</span>
     <% end %>
 
     <%# search bar %>
-    <form action="<%= search_path %>" method="get" class="form-inline ">
+    <form action="<%= search_path %>" method="get" class="form-inline">
       <div class="input-group">
         <button class="btn btn-primary" type="submit">Search</button>
         <input class="form-control" type="search" placeholder="title, author, genre or ISBN" aria-label="Search" name="query">
@@ -29,6 +29,8 @@
           </li>
           <li class="nav-item">
             <%= link_to "My Ownerships", ownerships_path, class: "nav-link" %>
+           <li class="nav-item">
+            <%= link_to "Rented Out", owner_rentals_path, class: "nav-link" %>
           </li>
           <li class="nav-item dropdown">
             <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
