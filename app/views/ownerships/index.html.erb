@@ -11,10 +11,10 @@
       <div class="row">
         <div class="col-12 col-md-6 offset-lg-3">
           <div class="bg-white rounded p-3 shadow">
-            <%= simple_form_for [@ownership] do |f| %>
+            <%= simple_form_for @ownership do |f| %>
               <%= f.association :book, prompt: "Select a book" %>
               <%= f.input :price, placeholder: "Enter a price for the book" %>
-              <%= f.input :condition, placeholder: "Enter a condition book" %>
+              <%= f.input :condition, placeholder: "Enter a condition book", collection: Ownership::CONDITIONS %>
               <%= f.submit class: "btn btn-flat" %>
             <% end %>
           </div>
@@ -27,7 +27,7 @@
     <% @ownerships.each do |ownership| %>
       <div class="book-card">
         <div class="card mb-4 border-0 shadow">
-          <a href="<%= ownership_path(ownership.book) %>">
+          <a href="<%= ownership_path(ownership) %>">
             <img src="<%= ownership.book.cover_url %>" alt="Cover of <%= ownership.book.title %>" class="index-book-cover">
           </a>
           <div class="card-body">

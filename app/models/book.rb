@@ -6,4 +6,7 @@ class Book < ApplicationRecord
   has_many :lists, through: :list_items
 
   validates :title, :author, :genre, :description, :isbn, :cover_url, presence: true
+
+  include PgSearch::Model
+  pg_search_scope :search, against: [:title, :author, :genre, :isbn]
 end

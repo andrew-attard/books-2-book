@@ -22,8 +22,13 @@ class ListItemsController < ApplicationController
   def destroy
     @list_item = ListItem.find(params[:id])
     @list = @list_item.list
-    @list_item.destroy
-    redirect_to list_path(@list), alert: 'Book was removed from the list.', status: :see_other
+
+    if @list.name == "My Rentals"
+      redirect_to list_path(@list), alert: 'Cannot remove items directly from "My Rentals".'
+    else
+      @list_item.destroy
+      redirect_to list_path(@list), notice: 'Book was removed from the list.', status: :see_other
+    end
   end
 
   private

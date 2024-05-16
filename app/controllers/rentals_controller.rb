@@ -14,8 +14,10 @@ class RentalsController < ApplicationController
     @rental = Rental.new(rental_params)
     @rental.ownership = @ownership # to be used later in the owner journey
     @rental.user = current_user
+
     if @rental.save
-      redirect_to rentals_path
+      add_to_rentals_list(@rental)
+      redirect_to rentals_path, notice: 'Rental successfully created and added to My Rentals list.'
     else
       @book = @ownership.book
       render 'new', status: :unprocessable_entity
@@ -40,5 +42,10 @@ class RentalsController < ApplicationController
 
   def rental_params
     params.require(:rental).permit(:start_date, :end_date)
+  end
+
+  def add_to_rentals_list(rental)
+    rentals_list = current_user.lists.find_or_create_by(name: 'My Rentals')
+    rentals_list.list_items.create(book: rental.ownership.book)
   end
 end
