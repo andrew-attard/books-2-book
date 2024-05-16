@@ -19,9 +19,6 @@ Rails.application.routes.draw do
     resources :ownerships, only: %i[new create]
   end
 
-  resources :ownerships, only: %i[index show] do
-  # index (Moritz), show (Andrew/Yoana) (new/create - booking request form will be here as well), bookings '/rentals (Vincent/team)
-  resources :books, only: %i[index show]
   resources :ownerships, only: %i[index show new create] do
     resources :rentals, only: %i[new create]
   end
@@ -37,8 +34,4 @@ Rails.application.routes.draw do
   post 'wishlist_list_items', to: 'list_items#create', as: 'wishlist_list_items'
   # Defines the root path route ("/")
   # root "posts#index"
-
-  # Search route
-  get '/search', to: 'search#index', as: 'search'
-end
 end
