@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
   # index (Moritz), show (Andrew/Yoana) (new/create - booking request form will be here as well), bookings '/rentals (Vincent/team)
   resources :books, only: %i[index show]
-  resources :ownerships, only: %i[index show] do
+  resources :ownerships, only: %i[index show new create] do
     resources :rentals, only: %i[new create]
   end
   resources :rentals, only: [:index]
