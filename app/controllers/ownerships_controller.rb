@@ -3,7 +3,7 @@ class OwnershipsController < ApplicationController
   # was no @ownership instance initialized from the index action. It was necessary
   # to add @ownership = Ownership.new here
   def index
-    @ownerships = Ownership.all.order(created_at: :desc)
+    @ownerships = current_user.ownerships.order(created_at: :desc)
     @ownership = Ownership.new
   end
 
