@@ -17,6 +17,8 @@
               <p><strong>ISBN:</strong> <%= @book.isbn %></p>
             </div>
           </div>
+          <!-- Add the disabled button here -->
+          <button class="btn btn-secondary mt-3 wishlist-btn" disabled>Add to Wishlist</button>
         </div>
       </div>
     </div>
@@ -46,7 +48,7 @@
       <div class="form-group">
         <%= f.input :end_date, as: :string, input_html: { class: 'form-control', data: { flatpickr_target: "endTime" }, placeholder: "Select end date" } %>
       </div>
-      <%= f.submit 'Submit', class: 'btn submit-btn' %>
+      <%= f.submit 'Confirm Rent', class: 'btn submit-btn' %>
     <% end %>
   </div>
 </div>

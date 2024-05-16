@@ -1,0 +1,12 @@
+<h1>Add Book to <%= @list.name %></h1>
+<%= form_with model: [@list, @list_item], local: true do |f| %>
+  <div class="form-group">
+    <%= f.label :book_id, 'Select Book' %>
+    <%= f.collection_select :book_id, @books, :id, :title, { include_blank: 'Select a book' }, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :comment %>
+    <%= f.text_area :comment, class: 'form-control' %>
+  </div>
+  <%= f.submit 'Add Book', class: 'btn btn-primary' %>
+<% end %>

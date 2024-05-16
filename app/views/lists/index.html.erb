@@ -1,0 +1,19 @@
+<h1 class="text-center my-4 page-heading">My Lists</h1>
+<%= link_to 'New List', new_list_path, class: 'btn btn-primary mb-4' %>
+
+<div class="container lists-container">
+  <% @lists.each do |list| %>
+    <div class="list-card">
+      <div class="card mb-4 border-0 shadow">
+        <a href="<%= list_path(list) %>">
+          <div class="card-body">
+            <h5 class="card-title">
+              <strong><%= link_to list.name, list_path(list), class: 'text-dark' %></strong>
+            </h5>
+            <p class="card-text">Items: <%= list.list_items.count %></p>
+          </div>
+        </a>
+      </div>
+    </div>
+  <% end %>
+</div>

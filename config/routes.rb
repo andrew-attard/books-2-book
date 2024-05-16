@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  get 'list_items/new'
+  get 'list_items/create'
+  get 'list_items/destroy'
+  get 'lists/index'
+  get 'lists/show'
+  get 'lists/new'
+  get 'lists/create'
+  get 'lists/destroy'
   devise_for :users
   root to: "pages#home"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
@@ -15,8 +23,11 @@ Rails.application.routes.draw do
   namespace :owner do
     resources :rentals, only: [:index]
   end
-  # Use devise current_user
+  resources :lists do
+    resources :list_items, only: %i[create destroy]
+  end
 
+  post 'wishlist_list_items', to: 'list_items#create', as: 'wishlist_list_items'
   # Defines the root path route ("/")
   # root "posts#index"
 end
