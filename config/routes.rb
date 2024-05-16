@@ -30,4 +30,7 @@ Rails.application.routes.draw do
   post 'wishlist_list_items', to: 'list_items#create', as: 'wishlist_list_items'
   # Defines the root path route ("/")
   # root "posts#index"
+
+  # Search route
+  get '/search', to: 'search#index', as: 'search'
 end

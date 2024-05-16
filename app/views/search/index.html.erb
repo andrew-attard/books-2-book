@@ -1,0 +1,19 @@
+<h1 class="text-center my-4">Search Results for <%= @query %></h1>
+
+<div class="container books-container">
+  <% @books.each do |book| %>
+    <div class="book-card">
+      <div class="card mb-4 border-0 shadow">
+        <a href="<%= book_path(book) %>">
+          <img src="<%= book.cover_url %>" alt="Cover of <%= book.title %>" class="index-book-cover">
+        </a>
+        <div class="card-body">
+          <h5 class="card-title">
+            <strong><%= link_to book.title, book_path(book), class: 'text-dark' %></strong>
+          </h5>
+          <p class="card-text"><%= book.author %></p>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
