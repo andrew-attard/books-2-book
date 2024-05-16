@@ -27,6 +27,8 @@
           <li class="nav-item">
             <%= link_to "Wishlist", list_path(current_user.lists.find_by(name: 'Wishlist')), class: "nav-link" %>
           </li>
+          <li class="nav-item">
+            <%= link_to "My Ownerships", ownerships_path, class: "nav-link" %>
            <li class="nav-item">
             <%= link_to "Rented Out", owner_rentals_path, class: "nav-link" %>
           </li>

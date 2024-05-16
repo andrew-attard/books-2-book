@@ -1,0 +1,46 @@
+<div class="container">
+  <h1 class="text-center my-4 page-heading">My Ownerships</h1>
+
+  <p class="d-inline-flex gap-1">
+    <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#addOwnership" aria-expanded="false" aria-controls="addOwnership">
+      Add Ownership
+    </button>
+  </p>
+  <div class="collapse mb-4" id="addOwnership">
+    <div class="container py-5">
+      <div class="row">
+        <div class="col-12 col-md-6 offset-lg-3">
+          <div class="bg-white rounded p-3 shadow">
+            <%= simple_form_for [@ownership] do |f| %>
+              <%= f.association :book, prompt: "Select a book" %>
+              <%= f.input :price, placeholder: "Enter a price for the book" %>
+              <%= f.input :condition, placeholder: "Enter a condition book" %>
+              <%= f.submit class: "btn btn-flat" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container d-flex justify-content-around books-container">
+    <% @ownerships.each do |ownership| %>
+      <div class="book-card">
+        <div class="card mb-4 border-0 shadow">
+          <a href="<%= ownership_path(ownership.book) %>">
+            <img src="<%= ownership.book.cover_url %>" alt="Cover of <%= ownership.book.title %>" class="index-book-cover">
+          </a>
+          <div class="card-body">
+            <h5 class="card-title">
+              <strong><%= link_to ownership.book.title, book_path(ownership.book), class: 'text-dark' %></strong>
+            </h5>
+            <p class="card-text"><%= ownership.book.author %></p>
+            <p class="card-text"><strong>Price:</strong> <%= ownership.price %></p>
+            <p class="card-text"><strong>Condition:</strong> <%= ownership.condition %></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+<%# render _form to add a new ownership %>
