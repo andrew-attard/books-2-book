@@ -5,6 +5,7 @@ require 'concurrent-ruby'
 puts "Cleaning the DB..."
 Ownership.destroy_all
 Rental.destroy_all
+User.destroy_all
 Book.destroy_all
 
 class OpenLibraryApi
@@ -143,12 +144,14 @@ conditions = ["Poor", "Fair", "Good", "Excellent", "Mint"]
     last_name: Faker::Name.last_name,
     password: "123456"
   )
-  Ownership.create!(
-    book: valid_books.sample,
-    user: user,
-    price: rand(1..10),
-    condition: conditions.sample
-  )
+  10.times do
+    Ownership.create!(
+      book: valid_books.sample,
+      user: user,
+      price: rand(1..10),
+      condition: conditions.sample
+    )
+  end
 end
 
 puts "...Created DB seeds"
