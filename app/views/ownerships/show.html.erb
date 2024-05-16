@@ -1,1 +1,26 @@
-<h1>Show the details of a single ownership</h2>
+<div class="container my-5">
+  <div class="book-show card border-0 shadow">
+    <div class="row no-gutters book-show-card">
+      <div class="col-md-4 d-flex justify-content-center">
+        <img src="<%= @ownership.book.cover_url %>" class="show-book-cover img-fluid" alt="<%= @ownership.book.title %> cover">
+      </div>
+      <div class="col-md-8">
+        <div class="book-details card-body">
+          <h1><%= @ownership.book.title %></h1>
+          <p class="lead"><strong>Author:</strong> <%= @ownership.book.author %></p>
+          <p class="lead"><strong>Price:</strong> <%= @ownership.price %></p>
+          <p class="lead"><strong>Condition:</strong> <%= @ownership.condition %></p>
+          <p class="lead"><%= @ownership.book.description %></p>
+          <div class="row">
+            <div class="col-md-4">
+              <p><strong>Genre:</strong> <%= @ownership.book.genre %></p>
+            </div>
+            <div class="col-md-4">
+              <p><strong>ISBN:</strong> <%= @ownership.book.isbn %></p>
+            </div>
+          </div>
+          <%= link_to 'See All Ownerships', ownerships_path, class: 'btn btn-secondary mt-3 wishlist-btn' %>
+        </div>
+      </div>
+    </div>
+  </div>

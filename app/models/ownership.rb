@@ -6,4 +6,6 @@ class Ownership < ApplicationRecord
   validates :price, presence: true
   validates :condition, presence: true
   validates :book, presence: true
+
+  CONDITIONS = ["Poor", "Fair", "Good", "Excellent", "Mint"]
 end
