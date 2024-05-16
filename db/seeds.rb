@@ -5,7 +5,6 @@ require 'concurrent-ruby'
 puts "Cleaning the DB..."
 Ownership.destroy_all
 Rental.destroy_all
-User.destroy_all
 Book.destroy_all
 
 class OpenLibraryApi
