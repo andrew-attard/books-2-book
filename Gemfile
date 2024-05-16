@@ -52,8 +52,6 @@ gem "pg_search"
 gem "simple_form", github: "heartcombo/simple_form"
 gem "sassc-rails"
 
-
-
 # Custom added gems
 gem 'httparty'
 gem 'faker'
