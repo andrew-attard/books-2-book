@@ -19,9 +19,9 @@ Rails.application.routes.draw do
   resources :ownerships, only: %i[index show new create] do
     resources :rentals, only: %i[new create]
   end
-  resources :rentals, only: [:index]
+  resources :rentals, only: [:index, :update]
   namespace :owner do
-    resources :rentals, only: [:index]
+    resources :rentals, only: %i[index]
   end
   resources :lists do
     resources :list_items, only: %i[create destroy]
