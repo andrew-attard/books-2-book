@@ -7,12 +7,14 @@
         <a href="<%= book_path(list_item.book) %>">
           <img src="<%= list_item.book.cover_url %>" alt="Cover of <%= list_item.book.title %>" class="index-book-cover">
         </a>
-        <div class="card-body card-body-index">
+        <div class="card-body">
           <h5 class="card-title">
             <strong><%= link_to list_item.book.title, book_path(list_item.book), class: 'text-dark' %></strong>
           </h5>
           <p class="card-text"><%= list_item.book.author %></p>
-          <%= link_to 'Remove', list_list_item_path(@list, list_item), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm remove-button' %>
+          <% unless @list.name == "My Rentals" %>
+            <%= link_to 'Remove', list_list_item_path(@list, list_item), method: :delete, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm mt-2 remove-btn' %>
+          <% end %>
         </div>
       </div>
     </div>
