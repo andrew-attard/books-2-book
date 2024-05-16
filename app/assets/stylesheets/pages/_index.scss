@@ -8,7 +8,7 @@
   object-fit: cover;
 }
 
-.book-card {
+.book-card, .list-card {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -51,81 +51,20 @@
   font-size: 0.9rem;
 }
 
-.books-container {
+.books-container, .lists-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
 }
 
 @media (max-width: 768px) {
-  .book-card {
+  .book-card, .list-card {
     max-width: 48%;
   }
 }
 
 @media (max-width: 576px) {
-  .book-card {
-    max-width: 100%;
-  }
-}
-
-// Import page-specific CSS files here.
-@import "home";
-
-// Index View Styles
-.index-book-cover {
-  width: 100%;
-  aspect-ratio: 2 / 3;
-  object-fit: cover;
-}
-
-.book-card {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 100%;
-  max-width: 200px;
-  margin-bottom: 20px;
-}
-
-.card-body {
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.card-title {
-  font-size: 1rem;
-  margin-bottom: 0.5rem;
-}
-
-.card-title a {
-  text-decoration: none;
-}
-
-.card-title a:hover {
-  text-decoration: underline;
-}
-
-.card-text {
-  font-size: 0.9rem;
-}
-
-.books-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
-
-@media (max-width: 768px) {
-  .book-card {
-    max-width: 48%;
-  }
-}
-
-@media (max-width: 576px) {
-  .book-card {
+  .book-card, .list-card {
     max-width: 100%;
   }
 }

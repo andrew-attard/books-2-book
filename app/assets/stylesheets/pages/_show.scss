@@ -31,7 +31,7 @@
 }
 
 .table-hover tbody tr:nth-of-type(odd) {
-  background-color: #f9f9f9; // Light grey color for odd rows
+  background-color: #f9f9f9;
 }
 
 .table-hover tbody tr:nth-of-type(even) {
@@ -61,4 +61,20 @@
   .book-details {
     text-align: center;
   }
+}
+
+.card-body-index {
+  position: relative;
+}
+
+.remove-button {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background-color: transparent;
+  color: #dc3545;
+  cursor: pointer;
+}
+
+.remove-button:hover {
+  color: #c82333;
 }

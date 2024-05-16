@@ -17,6 +17,7 @@
               <p><strong>ISBN:</strong> <%= @book.isbn %></p>
             </div>
           </div>
+          <%= button_to 'Add to Wishlist', wishlist_list_items_path(book_id: @book.id), method: :post, class: 'btn btn-secondary mt-3 wishlist-btn' %>
         </div>
       </div>
     </div>
@@ -37,7 +38,11 @@
           <td><%= ownership.user.first_name %> <%= ownership.user.last_name %></td>
           <td><%= ownership.condition %></td>
           <td>$<%= ownership.price %></td>
-          <td><%= link_to new_ownership_rental_path(ownership) do %><button class="btn">Borrow</button><% end %></td>
+          <td>
+            <%= link_to new_ownership_rental_path(ownership) do %>
+              <button class="btn">Rent</button>
+            <% end %>
+          </td>
         </tr>
       <% end %>
     </tbody>
