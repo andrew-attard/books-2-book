@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   has_many :rentals
   has_many :ownerships
+  has_many :rentals_as_owner, through: :ownerships, source: :rentals
   has_many :books, through: :ownerships
   has_many :lists, dependent: :destroy
   has_many :list_items, through: :lists
