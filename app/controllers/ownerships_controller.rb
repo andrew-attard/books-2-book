@@ -10,12 +10,15 @@ class OwnershipsController < ApplicationController
   def show
     @ownership = Ownership.find(params[:id])
   end
-
+  
   def new
+    @book = Book.find(params[:book_id])
     @ownership = Ownership.new
   end
 
   def create
+    @book = Book.find(params[:book_id])
+    @ownership_build = @book.ownerships.build(ownership_params)
     @user = current_user
     @ownership = Ownership.new(ownership_params)
     @ownership.user = @user
@@ -27,7 +30,7 @@ class OwnershipsController < ApplicationController
   end
 
   private
-
+    
   def ownership_params
     params.require(:ownership).permit(:price, :condition, :book_id, :user_id)
   end

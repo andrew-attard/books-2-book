@@ -17,7 +17,16 @@
               <p><strong>ISBN:</strong> <%= @book.isbn %></p>
             </div>
           </div>
-          <%= button_to 'Add to Wishlist', wishlist_list_items_path(book_id: @book.id), method: :post, class: 'btn btn-secondary mt-3 wishlist-btn' %>
+
+          <div class="row">
+          <div class="col-md-3">
+          <%= button_to 'Add to Wishlist', wishlist_list_items_path(book_id: @book.id), method: :post, class: 'btn mt-3 wishlist-btn' %>
+          </div>
+          <div class="col-md-3">
+          <%= link_to 'Rent out', new_book_ownership_path(@book), class: 'btn mt-3 wishlist-btn' %>
+          </div>
+          </div>
+
         </div>
       </div>
     </div>
