@@ -1,18 +1,18 @@
 <h1 class="text-center my-4 page-heading">My Rentals</h1>
 
-<div class="container d-flex justify-content-around books-container">
+<div class="container d-flex gap-3 align-items-center flex-wrap">
   <% @rentals.each do |rental| %>
     <div class="book-card">
       <div class="card mb-4 border-0 shadow">
         <a href="<%= book_path(rental.ownership.book) %>">
           <img src="<%= rental.ownership.book.cover_url %>" alt="Cover of <%= rental.ownership.book.title %>" class="index-book-cover">
         </a>
-        <div class="card-body">
+        <div class="card-body card-body-rentals">
           <h5 class="card-title">
             <strong><%= link_to rental.ownership.book.title, book_path(rental.ownership.book), class: 'text-dark' %></strong>
           </h5>
           <p class="card-text"><%= rental.ownership.book.author %></p>
-          <p class="card-text"><strong>Owner:</strong> <%= rental.ownership.user.first_name %> <%= rental.ownership.user.last_name %></p>
+          <p class="card-text"><strong><i class="fa-solid fa-user"></i></strong>  <%= rental.ownership.user.first_name %> <%= rental.ownership.user.last_name %></p>
           <p class="card-text"><strong>Start:</strong> <%= rental.start_date %></p>
           <p class="card-text"><strong>End:</strong> <%= rental.end_date %></p>
         </div>

@@ -1,9 +1,9 @@
 <div class="container">
   <h1 class="text-center my-4 page-heading">My Own Books</h1>
 
-  <p class="d-inline-flex gap-1">
-    <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#addOwnership" aria-expanded="false" aria-controls="addOwnership">
-      Add Ownership
+  <p class="d-flex gap-1 justify-content-end">
+    <button class="btn ml-4" type="button" data-bs-toggle="collapse" data-bs-target="#addOwnership" aria-expanded="false" aria-controls="addOwnership">
+      Add Book
     </button>
   </p>
   <div class="collapse mb-4" id="addOwnership">
@@ -23,7 +23,7 @@
     </div>
   </div>
 
-  <div class="container d-flex justify-content-around books-container">
+  <div class="container d-flex gap-3 align-items-center flex-wrap">
     <% @ownerships.each do |ownership| %>
       <div class="book-card">
         <div class="card mb-4 border-0 shadow">
@@ -35,7 +35,7 @@
               <strong><%= link_to ownership.book.title, book_path(ownership.book), class: 'text-dark' %></strong>
             </h5>
             <p class="card-text"><%= ownership.book.author %></p>
-            <p class="card-text"><strong>Price:</strong> <%= ownership.price %></p>
+            <p class="card-text"><strong>Price:</strong> $<%= ownership.price %></p>
             <p class="card-text"><strong>Condition:</strong> <%= ownership.condition %></p>
             <%= link_to 'Remove', ownership_path(ownership), method: :delete, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: 'btn btn-danger mt-2' %>
           </div>

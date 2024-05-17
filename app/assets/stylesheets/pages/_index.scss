@@ -8,7 +8,8 @@
   object-fit: cover;
 }
 
-.book-card, .list-card {
+.book-card,
+.list-card {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -51,20 +52,23 @@
   font-size: 0.9rem;
 }
 
-.books-container, .lists-container {
+.books-container,
+.lists-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
 }
 
 @media (max-width: 768px) {
-  .book-card, .list-card {
+  .book-card,
+  .list-card {
     max-width: 48%;
   }
 }
 
 @media (max-width: 576px) {
-  .book-card, .list-card {
+  .book-card,
+  .list-card {
     max-width: 100%;
   }
 }

@@ -1,13 +1,13 @@
 <h1 class="text-center my-4 page-heading"><%= @list.name %></h1>
 
-<div class="container books-container">
+<div class="container d-flex gap-3 align-items-center flex-wrap">
   <% @list_items.each do |list_item| %>
     <div class="book-card">
       <div class="card mb-4 border-0 shadow">
         <a href="<%= book_path(list_item.book) %>">
           <img src="<%= list_item.book.cover_url %>" alt="Cover of <%= list_item.book.title %>" class="index-book-cover">
         </a>
-        <div class="card-body">
+        <div class="card-body card-body-wishlist">
           <h5 class="card-title">
             <strong><%= link_to list_item.book.title, book_path(list_item.book), class: 'text-dark' %></strong>
           </h5>
