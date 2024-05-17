@@ -1,5 +1,17 @@
-<h1 class="text-center my-4 page-heading">Search Results for <%= @query %></h1>
+<%# Title %>
+<% if params[:query].present? %>
+  <% if @books.size == 1 %>
+    <h1 class="text-center my-4 page-heading">1 Result Found</h1>
+  <% elsif @books.size == 0 %>
+    <h1 class="text-center my-4 page-heading">No Result</h1>
+  <% else %>
+    <h1 class="text-center my-4 page-heading"><%= pluralize(@books.size, 'Result') %> Found</h1>
+  <% end %>
+<% else %>
+  <h1 class="text-center my-4 page-heading">All Books</h1>
+<% end %>
 
+<%# Results %>
 <div class="container d-flex gap-3 align-items-center flex-wrap">
   <% @books.each do |book| %>
     <div class="book-card">
