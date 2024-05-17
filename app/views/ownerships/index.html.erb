@@ -35,7 +35,7 @@
               <strong><%= link_to ownership.book.title, book_path(ownership.book), class: 'text-dark' %></strong>
             </h5>
             <p class="card-text"><%= ownership.book.author %></p>
-            <p class="card-text"><i class="fa-solid fa-dollar-sign"></i>  $<%= ownership.price %></p>
+            <p class="card-text"><i class="fa-solid fa-dollar-sign"></i>  <%= ownership.price %></p>
             <p class="card-text"><i class="fa-regular fa-square-check"></i>  <%= ownership.condition %></p>
             <%= link_to ownership_path(ownership), method: :delete, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: 'btn btn-remove' do %>
               <i class="fa-solid fa-trash-can"></i>
