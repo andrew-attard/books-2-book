@@ -13,20 +13,21 @@
               <strong><%= link_to rental.book.title, book_path(rental.book), class: 'text-dark' %></strong>
             </h5>
             <p class="card-text"><%= rental.book.author %></p>
+          <div class="booking-actions">
             <% if rental.pending? %>
-              <div class="d-flex">
-                <%= simple_form_for rental, url: rental_path(rental), method: :patch do |f| %>
-                  <%= f.input :status, as: :hidden, input_html: { value: 'accept' } %>
-                  <%= f.submit 'Accept', class: 'btn' %>
-                <% end %>
-                <%= simple_form_for rental, url: rental_path(rental), method: :patch do |f| %>
-                  <%= f.input :status, as: :hidden, input_html: { value: 'deny' } %>
-                  <%= f.submit 'Deny', class: 'btn' %>
-                <% end %>
-              </div>
-            <% else %>
-              <p class='booking-tag'><%= rental.status.capitalize %></p>
-            <% end %>
+              <%= simple_form_for rental do |f| %>
+                <%= f.input :status, as: :hidden, input_html: { value: 'accepted'} %>
+                <%= f.submit 'Accept', class: 'btn' %>
+              <% end %>
+              <%= simple_form_for rental do |f| %>
+                <%= f.input :status, as: :hidden, input_html: { value: 'rejected' } %>
+                <%= f.submit 'Reject', class: 'btn' %>
+              <% end %>
+              <% else %>
+                <p class='booking-tag'><%= rental.status.capitalize %></p>
+              <% end %>
+            </div>
+          </div>
           </div>
         </div>
       </div>
