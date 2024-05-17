@@ -15,7 +15,7 @@
               <%= f.association :book, prompt: "Select a book" %>
               <%= f.input :price, placeholder: "Enter a price for the book" %>
               <%= f.input :condition, placeholder: "Enter a condition for the book", collection: Ownership::CONDITIONS %>
-              <%= f.submit class: "btn btn-flat" %>
+              <%= f.submit 'Create Offer', class: "btn btn-flat" %>
             <% end %>
           </div>
         </div>
