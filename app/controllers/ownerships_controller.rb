@@ -33,15 +33,20 @@ class OwnershipsController < ApplicationController
       redirect_to ownerships_path and return
     end
 
-    @ownership = @book.ownerships.build(ownership_params)
-    @ownership.user = current_user
+    @ownership = @book.ownerships.find_or_initialize_by(user: current_user)
 
-    if @ownership.save
-      add_to_own_books_list(@ownership)
-      redirect_to ownerships_path, notice: 'Ownership successfully created and added to My Own Books list.'
+    if @ownership.new_record?
+      @ownership.assign_attributes(ownership_params)
+      if @ownership.save
+        add_to_own_books_list(@ownership)
+        redirect_to ownerships_path, notice: 'Ownership successfully created and added to My Own Books list.'
+      else
+        @book = @ownership.book
+        render :new, status: :unprocessable_entity
+      end
     else
-      @book = @ownership.book
-      render :new, status: :unprocessable_entity
+      flash[:notice] = 'You already own this book.'
+      redirect_to ownerships_path
     end
   end
 
