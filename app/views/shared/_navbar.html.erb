@@ -1,3 +1,4 @@
+
 <div class="navbar justify-content-between px-3 navbar-expand-sm navbar-light navbar-lewagon">
   <%# Brand logo and link to home page %>
   <%= link_to root_path, class: "navbar-brand d-flex align-items-center" do %>
@@ -17,37 +18,27 @@
   <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-
-  <%# Link content %>
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav ms-auto">
       <% if user_signed_in? %>
-        <%# My Rentals link %>
-        <li class="nav-item">
-          <%= link_to "My Rentals", rentals_path, class: "nav-link" %>
-        </li>
-
-        <%# Wishlist link %>
         <li class="nav-item">
           <%= link_to "Wishlist", list_path(current_user.lists.find_by(name: 'Wishlist')), class: "nav-link" %>
         </li>
-
-        <%# My Ownerships link %>
-        <li class="nav-item">
-          <%= link_to "My Ownerships", ownerships_path, class: "nav-link" %>
-        </li>
-
-        <%# Rented Out link %>
-        <li class="nav-item">
-          <%= link_to "Rented Out", owner_rentals_path, class: "nav-link" %>
-        </li>
-
-        <%# User avatar and dropdown menu %>
         <li class="nav-item dropdown">
-          <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <a href="#" class="nav-link dropdown-toggle" id="myBooksDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            My Books
+          </a>
+          <div class="dropdown-menu dropdown-menu-end" aria-labelledby="myBooksDropdown">
+            <%= link_to "Owned Books", ownerships_path, class: "dropdown-item" %>
+            <%= link_to "Rented Out Books", owner_rentals_path, class: "dropdown-item" %>
+            <%= link_to "Rentals", rentals_path, class: "dropdown-item" %>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a href="#" class="avatar" id="profileDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <%= image_tag "https://source.unsplash.com/random/?book", class: "avatar", alt: "dropdown menu" %>
           </a>
-          <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+          <div class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
             <%= link_to "Log out", destroy_user_session_path, data: { turbo_method: :delete }, class: "dropdown-item" %>
           </div>
         </li>
