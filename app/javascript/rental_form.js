@@ -18,3 +18,17 @@ document.addEventListener('DOMContentLoaded', () => {
   startDateInput.addEventListener('change', toggleSubmitButton);
   endDateInput.addEventListener('change', toggleSubmitButton);
 });
+
+document.addEventListener("DOMContentLoaded", function() {
+  var rentedDates = <%= raw @rented_dates.to_json %>; // Convert Ruby array to JavaScript array
+
+  flatpickr("#startTime", {
+    // Other options
+    disable: rentedDates
+  });
+
+  flatpickr("#endTime", {
+    // Other options
+    disable: rentedDates
+  });
+});
