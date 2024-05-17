@@ -1,11 +1,11 @@
 <div class="navbar justify-content-between px-3 navbar-expand-sm navbar-light navbar-lewagon">
-  <%# Brand logo and link to home page %>
+  <!-- Brand logo and link to home page -->
   <%= link_to root_path, class: "navbar-brand d-flex align-items-center" do %>
     <i class="fas fa-book"></i>
     <span class="ms-2 header-title">Books2Book</span>
   <% end %>
 
-  <%# Search bar %>
+  <!-- Search bar -->
   <form action="<%= books_path %>" method="get" class="form-inline d-flex align-items-center ms-3">
     <div class="input-group">
       <button class="btn" type="submit">Search</button>
@@ -13,21 +13,21 @@
     </div>
   </form>
 
-  <%# Toggle button for collapsed content in smaller screens %>
+  <!-- Toggle button for collapsed content in smaller screens -->
   <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <%# Navbar links and dropdowns %>
+  <!-- Navbar links and dropdowns -->
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav ms-auto">
       <% if user_signed_in? %>
-        <%# Wishlist link %>
+        <!-- Wishlist link -->
         <li class="nav-item">
           <%= link_to "Wishlist", list_path(current_user.lists.find_by(name: 'Wishlist')), class: "nav-link" %>
         </li>
 
-        <%# My Books dropdown %>
+        <!-- My Books dropdown -->
         <li class="nav-item dropdown">
           <a href="#" class="nav-link dropdown-toggle" id="myBooksDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             My Books
@@ -39,7 +39,7 @@
           </div>
         </li>
 
-        <%# User profile and logout dropdown %>
+        <!-- User profile and logout dropdown -->
         <li class="nav-item dropdown">
           <a href="#" class="avatar" id="profileDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <%= image_tag "https://source.unsplash.com/random/?book", class: "avatar", alt: "dropdown menu" %>
@@ -49,8 +49,7 @@
           </div>
         </li>
       <% else %>
-
-        <%# Login link for non-signed-in users %>
+        <!-- Login link for non-signed-in users -->
         <li class="nav-item">
           <%= link_to "Login", new_user_session_path, class: "nav-link" %>
         </li>
