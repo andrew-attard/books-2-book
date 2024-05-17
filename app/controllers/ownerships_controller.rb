@@ -13,6 +13,19 @@ class OwnershipsController < ApplicationController
     @ownership = Ownership.new
   end
 
+  def edit
+    @ownership = Ownership.find(params[:id])
+  end
+
+  def update
+    @ownership = Ownership.find(params[:id])
+    if @ownership.update(ownership_params)
+      redirect_to @ownership, notice: 'Ownership successfully updated.'
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
   def create
     @book = Book.find_by(id: ownership_params[:book_id]) || Book.find(params[:book_id])
     if @book.nil?
