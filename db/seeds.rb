@@ -6,6 +6,7 @@ puts "Cleaning the DB..."
 Ownership.destroy_all
 Rental.destroy_all
 Book.destroy_all
+ListItem.destroy_all
 
 class OpenLibraryApi
   include HTTParty
@@ -22,18 +23,17 @@ end
 
 api = OpenLibraryApi.new
 titles = [
-  'The Lord of the Rings', 'The Hunger Games', 'Dune', 'Foundation and Empire', 'The Da Vinci Code', 'The Hobbit',
-  'The Chronicles of Narnia', 'The Kite Runner', 'The Fault in Our Stars',
-  'Brave New World', 'War and Peace', 'Moby Dick', 'Dracula', 'Little Women', 'The Shining',
-  'The Hitchhiker\'s Guide to the Galaxy', 'Frankenstein', 'The Stand', 'A Game of Thrones', 'Catching Fire',
-  'Water for Elephants', 'Mockingjay', 'The Girl on the Train',
-  'The Giver', 'The Light Between Oceans', 'The Immortal Life of Henrietta Lacks',
-  'Alice\'s Adventures in Wonderland', 'Wuthering Heights', 'The Wind in the Willows',
-  'The Lion, the Witch, and the Wardrobe', 'Ivanhoe',
-  'My Ántonia', 'Fathers and Sons', 'The Fellowship of the Ring',
-  'The Trial', 'Moby Dick', 'Country Driving',
-  'Gulliver\'s Travels', 'The Call of the Wild',
-  'Alice\'s Adventures in Wonderland'
+  'The Lord of the Rings', 'The Hunger Games', 'The Da Vinci Code', 'The Hobbit', 'Eat, Pray, Love', 'Life of Pi',
+  'The Chronicles of Narnia', 'The Kite Runner', 'The Fault in Our Stars', 'Brave New World',
+  'Moby Dick', 'Dracula', 'Little Women', 'The Shining', 'The Hitchhiker\'s Guide to the Galaxy', 'Frankenstein',
+  'The Stand', 'A Game of Thrones', 'Catching Fire', 'Water for Elephants', 'Mockingjay', 'The Girl on the Train',
+  'The Giver', 'The Light Between Oceans', 'The Immortal Life of Henrietta Lacks', 'Alice\'s Adventures in Wonderland',
+  'Wuthering Heights', 'The Wind in the Willows', 'The Lion, the Witch, and the Wardrobe', 'Ivanhoe', 'My Ántonia',
+  'Fathers and Sons', 'The Trial', 'Country Driving', 'Gulliver\'s Travels', 'The Time Traveler\'s Wife',
+  'The Call of the Wild', 'The Great Gatsby', 'The Catcher in the Rye', 'The Brothers Karamazov',
+  'Love in the Time of Cholera', 'Beloved', 'The Color Purple', 'The Sound and the Fury',
+  'No Country for Old Men', 'Les Misérables', 'An Immense World','The Three Musketeers',
+  'War and Peace', 'Madame Bovary'
 ]
 
 popular_genres = [
@@ -143,7 +143,7 @@ conditions = ["Poor", "Fair", "Good", "Excellent", "Mint"]
     last_name: Faker::Name.last_name,
     password: "123456"
   )
-  10.times do
+  5.times do
     Ownership.create!(
       book: valid_books.sample,
       user: user,

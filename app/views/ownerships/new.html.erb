@@ -1,18 +1,53 @@
-<!-- app/views/ownerships/new.html.erb -->
-
 <div class="container my-5">
-  <h2>Claim Ownership of <%= @book.title %></h2>
-  <%= form_with model: [@book, @ownership], local: true do |form| %>
-    <div class="form-group">
-      <%= form.label :price %>
-      <%= form.number_field :price, class: "form-control", step: 0.01 %>
+  <div class="book-show card border-0 shadow">
+    <div class="row no-gutters book-show-card">
+      <div class="col-md-4 d-flex justify-content-center">
+        <img src="<%= @book.cover_url %>" class="show-book-cover img-fluid" alt="<%= @book.title %> cover">
+      </div>
+      <div class="col-md-8">
+        <div class="book-details card-body">
+          <h1><%= @book.title %></h1>
+          <p class="lead"><strong>Author:</strong> <%= @book.author %></p>
+          <p class="lead"><%= @book.description %></p>
+          <div class="row">
+            <div class="col-md-4">
+              <p><strong>Genre:</strong> <%= @book.genre %></p>
+            </div>
+            <div class="col-md-4">
+              <p><strong>ISBN:</strong> <%= @book.isbn %></p>
+            </div>
+          </div>
+          <button class="btn btn-secondary mt-3 wishlist-btn" disabled>Add to Wishlist</button>
+        </div>
+      </div>
     </div>
-
-    <div class="form-group">
-      <%= form.label :condition %>
-      <%= form.select :condition, ["Poor", "Fair", "Good", "Excellent", "Mint"], class: "form-control" %>
-    </div>
-
-    <%= form.submit "Claim Ownership", class: "btn btn-primary" %>
-  <% end %>
+  </div>
+  <hr>
+  <table class="table table-hover table-light">
+    <thead>
+      <tr>
+        <th>Owner</th>
+        <th>Condition</th>
+        <th>Price</th>
+      </tr>
+    </thead>
+    <tbody class="table-group-divider">
+      <tr>
+        <td>N/A</td>
+        <td>N/A</td>
+        <td>N/A</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="card p-4 mb-4">
+    <%= simple_form_for [@book, @ownership] do |f| %>
+      <div class="form-group">
+        <%= f.input :price, placeholder: "Enter a price for the book" %>
+      </div>
+      <div class="form-group">
+        <%= f.input :condition, placeholder: "Enter a condition for the book", collection: Ownership::CONDITIONS %>
+      </div>
+      <%= f.submit 'Confirm Ownership', class: 'btn submit-btn' %>
+    <% end %>
+  </div>
 </div>

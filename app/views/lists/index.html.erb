@@ -1,18 +1,38 @@
-<h1 class="text-center my-4 page-heading">My Lists</h1>
-<%= link_to 'New List', new_list_path, class: 'btn btn-primary mb-4' %>
-
-<div class="container lists-container">
+<div class="container">
   <% @lists.each do |list| %>
-    <div class="list-card">
-      <div class="card mb-4 border-0 shadow">
-        <a href="<%= list_path(list) %>">
-          <div class="card-body">
-            <h5 class="card-title">
-              <strong><%= link_to list.name, list_path(list), class: 'text-dark' %></strong>
-            </h5>
-            <p class="card-text">Items: <%= list.list_items.count %></p>
+    <div class="list-section mb-5">
+      <h2 class="text-center my-4 page-heading"><%= list.name %></h2>
+
+      <% if list.name == "My Own Books" %>
+        <div class="text-center">
+          <%= link_to 'View All', ownerships_path, class: 'btn btn-info mb-3' %>
+        </div>
+      <% elsif list.name == "My Rentals" %>
+        <div class="text-center">
+          <%= link_to 'View All', rentals_path, class: 'btn btn-info mb-3' %>
+        </div>
+      <% elsif list.name == "Wishlist" %>
+        <div class="text-center">
+          <%= link_to 'View All', list_path(current_user.lists.find_by(name: 'Wishlist')), class: 'btn btn-info mb-3' %>
+        </div>
+      <% end %>
+
+      <div class="container books-container">
+        <% list.list_items.limit(4).each do |list_item| %>
+          <div class="book-card">
+            <div class="card mb-4 border-0 shadow">
+              <a href="<%= book_path(list_item.book) %>">
+                <img src="<%= list_item.book.cover_url %>" alt="Cover of <%= list_item.book.title %>" class="index-book-cover">
+              </a>
+              <div class="card-body card-body-index">
+                <h5 class="card-title">
+                  <strong><%= link_to list_item.book.title, book_path(list_item.book), class: 'text-dark' %></strong>
+                </h5>
+                <p class="card-text"><%= list_item.book.author %></p>
+              </div>
+            </div>
           </div>
-        </a>
+        <% end %>
       </div>
     </div>
   <% end %>
