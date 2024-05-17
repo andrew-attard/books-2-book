@@ -1,6 +1,5 @@
 <h1 class="text-center my-4 page-heading">My Rented Out Books</h1>
 
-<div class="rentals">
   <div class="container d-flex gap-3 align-items-center flex-wrap">
     <% @rentals.each do |rental| %>
       <div class="book-card">
@@ -8,11 +7,14 @@
           <a href="<%= book_path(rental.book) %>">
             <img src="<%= rental.book.cover_url %>" alt="Cover of <%= rental.book.title %>" class="index-book-cover">
           </a>
-          <div class="card-body">
+          <div class="card-body card-body-rent-request">
             <h5 class="card-title">
               <strong><%= link_to rental.book.title, book_path(rental.book), class: 'text-dark' %></strong>
             </h5>
             <p class="card-text"><%= rental.book.author %></p>
+            <p class="card-text"><i class="fa-solid fa-book-open-reader"></i> <%= rental.user.first_name %> <%= rental.user.last_name %></p>
+            <p class="card-text"><strong>Start:</strong> <%= rental.start_date %></p>
+            <p class="card-text"><strong>End:</strong> <%= rental.end_date %></p>
           <div class="booking-actions">
             <% if rental.pending? %>
               <%= simple_form_for rental do |f| %>
@@ -30,7 +32,6 @@
           </div>
           </div>
         </div>
-      </div>
     <% end %>
+      </div>
   </div>
-</div>

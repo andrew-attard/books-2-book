@@ -15,6 +15,9 @@
           <p class="card-text"><strong><i class="fa-solid fa-user"></i></strong>  <%= rental.ownership.user.first_name %> <%= rental.ownership.user.last_name %></p>
           <p class="card-text"><strong>Start:</strong> <%= rental.start_date %></p>
           <p class="card-text"><strong>End:</strong> <%= rental.end_date %></p>
+          <div class="booking-actions">
+            <p class='booking-tag'><%= rental.status.capitalize %></p>
+          </div>
         </div>
       </div>
     </div>
