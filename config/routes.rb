@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     resources :ownerships, only: %i[new create]
   end
 
-  resources :ownerships, only: %i[index show new create destroy] do
+  resources :ownerships, only: %i[index show new create destroy edit update] do
     resources :rentals, only: %i[new create]
   end
 
