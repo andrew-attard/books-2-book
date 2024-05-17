@@ -5,7 +5,7 @@ class Rental < ApplicationRecord
   has_one :book, through: :ownership
 
   validates :status, presence: true
-  enum status: { pending: 'Pending', accept: 'Accepted', deny: 'Denied' }, _default: :pending # to be used later in the owner journey
+  enum status: { pending: 'pending', accepted: 'accepted', rejected: 'rejected' }, _default: :pending # to be used later in the owner journey
   validates :start_date, presence: true
   validates :end_date, presence: true
 end
