@@ -30,7 +30,7 @@ titles = [
   'The Giver', 'The Light Between Oceans', 'The Immortal Life of Henrietta Lacks', 'Alice\'s Adventures in Wonderland',
   'Wuthering Heights', 'The Wind in the Willows', 'The Lion, the Witch, and the Wardrobe', 'Ivanhoe', 'My Ántonia',
   'Fathers and Sons', 'The Trial', 'Country Driving', 'Gulliver\'s Travels', 'The Time Traveler\'s Wife',
-  'The Call of the Wild', 'The Great Gatsby', 'The Catcher in the Rye', 'The Brothers Karamazov',
+  'The Call of the Wild', 'The Great Gatsby', 'The Catcher in the Rye', 'Shoe Dog',
   'Love in the Time of Cholera', 'Beloved', 'The Color Purple', 'The Sound and the Fury',
   'No Country for Old Men', 'Les Misérables', 'An Immense World','The Three Musketeers',
   'War and Peace', 'Madame Bovary'

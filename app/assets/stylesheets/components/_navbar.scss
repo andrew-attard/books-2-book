@@ -16,8 +16,17 @@
   }
 }
 
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
+
+.navbar .nav-link.dropdown-toggle {
+  color: inherit;
+}
+
+.navbar .nav-link.dropdown-toggle::after {
+  color: inherit;
+}
+
+.navbar .nav-link.dropdown-toggle.show {
+  color: inherit;
 }
 
 .navbar-lewagon .navbar-brand img {
