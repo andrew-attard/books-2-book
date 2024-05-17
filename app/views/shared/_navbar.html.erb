@@ -1,21 +1,23 @@
-<div class="navbar d-flex justify-content-between px-3 navbar-expand-sm navbar-light navbar-lewagon">
+
+<div class="navbar justify-content-between px-3 navbar-expand-sm navbar-light navbar-lewagon">
+  <%# Brand logo and link to home page %>
   <%= link_to root_path, class: "navbar-brand d-flex align-items-center" do %>
     <i class="fas fa-book"></i>
     <span class="ms-2 header-title">Books2Book</span>
   <% end %>
 
-  <%# search bar %>
-  <form action="<%= books_path %>" method="get" class="form-inline">
+  <%# Search bar %>
+  <form action="<%= books_path %>" method="get" class="form-inline d-flex align-items-center ms-3">
     <div class="input-group">
       <button class="btn" type="submit">Search</button>
       <input class="form-control" type="search" value="<%= params[:query] %>" placeholder="title, author, genre or ISBN" aria-label="Search" name="query">
     </div>
   </form>
 
+  <%# Toggle button for collapsed content in smaller screens %>
   <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav ms-auto">
       <% if user_signed_in? %>
@@ -41,6 +43,7 @@
           </div>
         </li>
       <% else %>
+        <%# Login link for non-signed-in users %>
         <li class="nav-item">
           <%= link_to "Login", new_user_session_path, class: "nav-link" %>
         </li>
