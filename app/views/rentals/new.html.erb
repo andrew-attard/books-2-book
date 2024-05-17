@@ -44,6 +44,7 @@
     <%= simple_form_for [ @ownership, @rental ], data: { controller: 'flatpickr' } do |f| %>
       <div class="form-group">
         <%= f.input :start_date, as: :string, input_html: { class: 'form-control', data: { flatpickr_target: "startTime" }, placeholder: "Select start date" } %>
+        <%= f.error :start_date %>
       </div>
       <div class="form-group">
         <%= f.input :end_date, as: :string, input_html: { class: 'form-control', data: { flatpickr_target: "endTime" }, placeholder: "Select end date" } %>
@@ -52,3 +53,26 @@
     <% end %>
   </div>
 </div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const startDateInput = document.querySelector("[data-flatpickr-target='startTime']");
+    const endDateInput = document.querySelector("[data-flatpickr-target='endTime']");
+    const submitButton = document.querySelector('.submit-btn');
+
+    // Function to enable/disable the submit button based on date selection
+    const toggleSubmitButton = () => {
+      const startDate = new Date(startDateInput.value);
+      const endDate = new Date(endDateInput.value);
+      if (endDate < startDate) {
+        submitButton.disabled = true; // Disable submit button for negative date range
+      } else {
+        submitButton.disabled = false; // Enable submit button
+      }
+    };
+
+    // Event listeners for date inputs
+    startDateInput.addEventListener('change', toggleSubmitButton);
+    endDateInput.addEventListener('change', toggleSubmitButton);
+  });
+</script>
