@@ -12,7 +12,7 @@ class RentalsController < ApplicationController
   def create
     @ownership = Ownership.find(params[:ownership_id])
     @rental = Rental.new(rental_params)
-    @rental.ownership = @ownership # to be used later in the owner journey
+    @rental.ownership = @ownership
     @rental.user = current_user
 
     if @rental.save
@@ -24,11 +24,11 @@ class RentalsController < ApplicationController
     end
   end
 
-    def update
+  def update
     @rental = current_user.rentals_as_owner.find(params[:id])
     # raise
     if @rental.update(update_rentals_params)
-      redirect_to owner_rentals_path
+      redirect_to owner_rentals_path, notice: 'Rental status updated.'
     else
       render 'index', status: :unprocessable_entity
     end
@@ -36,12 +36,12 @@ class RentalsController < ApplicationController
 
   private
 
-  def update_rentals_params
-    params.require(:rental).permit(:status)
-  end
-
   def rental_params
     params.require(:rental).permit(:start_date, :end_date)
+  end
+
+  def update_rentals_params
+    params.require(:rental).permit(:status)
   end
 
   def add_to_rentals_list(rental)
