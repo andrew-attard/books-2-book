@@ -41,6 +41,12 @@ body {
   }
 }
 
+.btn-remove {
+  &:hover {
+    color: red;
+  }
+}
+
 .wishlist-btn {
   width: 150px;
   padding: 10px;

@@ -33,12 +33,17 @@
   height: 100px; // Adjust the height as needed
 }
 
-.card-body-rentals {
-  height: 220px;
-}
-
 .card-body-wishlist {
   height: 150px;
+}
+
+.card-body-rentals,
+.card-body-rent-request {
+  height: 280px;
+}
+
+.card-body-own-books {
+  height: 240px;
 }
 
 .card-title {
