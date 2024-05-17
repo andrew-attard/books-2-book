@@ -2,31 +2,31 @@
 
 <div class="rentals">
   <div class="container d-flex justify-content-around books-container">
-    <% @rentals.each do |rental| %>
+    <% rental = @rentals.each do |rental| %>
       <div class="book-card">
         <div class="card mb-4 border-0 shadow">
-          <a href="<%= book_path(rental.ownership.book) %>">
-            <img src="<%= rental.ownership.book.cover_url %>" alt="Cover of <%= rental.ownership.book.title %>" class="index-book-cover">
+          <a href="<%= book_path(rental.book) %>">
+            <img src="<%= rental.book.cover_url %>" alt="Cover of <%= rental.book.title %>" class="index-book-cover">
           </a>
           <div class="card-body">
             <h5 class="card-title">
-              <strong><%= link_to rental.ownership.book.title, book_path(rental.ownership.book), class: 'text-dark' %></strong>
+              <strong><%= link_to rental.book.title, book_path(rental.book), class: 'text-dark' %></strong>
             </h5>
-            <p class="card-text"><%= rental.ownership.book.author %></p>
-            <% if rental.pending? %>
-              <div class="d-flex">
-                <%= simple_form_for rental do |f| %>
+            <p class="card-text"><%= rental.book.author %></p>
+              <% if rental.pending? %>
+            <div class="d-flex">
+              <%= simple_form_for rental do |f| %>
                 <%= f.input :status, as: :hidden, input_html: { value: 'accept'} %>
                 <%= f.submit 'Accept', class: 'btn' %>
-                <% end %>
-                <%= simple_form_for rental do |f| %>
+              <% end %>
+              <%= simple_form_for rental do |f| %>
                 <%= f.input :status, as: :hidden, input_html: { value: 'deny' } %>
                 <%= f.submit 'Deny', class: 'btn' %>
               <% end %>
-              </div>
-            <% else %>
-              <p class='booking-tag'><%= rental.status %></p>
-            <% end %>
+              <% else %>
+                <p class='booking-tag'><%= rental.status.capitalize %></p>
+              <% end %>
+            </div>
           </div>
         </div>
       </div>
