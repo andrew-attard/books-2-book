@@ -13,7 +13,9 @@
           </h5>
           <p class="card-text"><%= list_item.book.author %></p>
           <% unless @list.name == "My Rentals" %>
-            <%= link_to 'Remove', list_list_item_path(@list, list_item), method: :delete, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm mt-2 remove-btn' %>
+            <%= link_to list_list_item_path(@list, list_item), method: :delete, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: 'btn btn-remove' do %>
+              <i class="fa-solid fa-trash-can"></i>
+            <% end %>
           <% end %>
         </div>
       </div>
