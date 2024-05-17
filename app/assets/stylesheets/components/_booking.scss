@@ -1,0 +1,14 @@
+.booking-actions {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.booking-tag {
+  margin: 1px 4px;
+  padding: 5px 8px;
+  background-color: $light-green;
+  color: white;
+  border-radius: 5px;
+  font-weight: lighter;
+}
